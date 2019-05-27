@@ -18,10 +18,9 @@ class Form extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        event.target.reset();
         this.setState({
-            value: this.state.text
-        }, () => {
-            this.setState({ text: ''})
+            value: this.state.text,
         })
     }
 
@@ -30,8 +29,10 @@ class Form extends Component {
             <Fragment>
                 <form onSubmit={this.handleSubmit}>
                     <p>{FormConstants.bodyTitle}</p>
-                    <label>Name:&nbsp;</label>
-                    <input type="text" onChange={this.inputChangeEvent} />
+                    <label>Name:&nbsp;
+                        <input type="text" onChange={this.inputChangeEvent} />
+                    </label>
+
                     <input type="submit" onChange={this.inputChangeEvent} />
                     <p>{this.state.value}</p>
                 </form>
